@@ -21,26 +21,33 @@ const Contact = () => {
           {/* Decorative illustration */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            animate={
+              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+            }
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center mb-16"
           >
             <div className="relative">
-              <svg width="100" height="100" viewBox="0 0 100 100" className="text-primary">
-                <circle 
-                  cx="50" 
-                  cy="50" 
-                  r="30" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
+              <svg
+                width="100"
+                height="100"
+                viewBox="0 0 100 100"
+                className="text-primary"
+              >
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="30"
+                  stroke="currentColor"
+                  strokeWidth="2"
                   fill="none"
                 />
-                <circle 
-                  cx="50" 
-                  cy="50" 
-                  r="15" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="15"
+                  stroke="currentColor"
+                  strokeWidth="2"
                   fill="none"
                 />
                 <circle cx="50" cy="50" r="5" fill="currentColor" />
@@ -63,7 +70,9 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-sm sm:text-base text-muted-foreground mb-8 sm:mb-12 max-w-xl mx-auto leading-relaxed px-4"
           >
-            Ready to enhance your filtration processes? Contact us today to discuss your specific requirements and discover how our solutions can optimize your operations.
+            Ready to enhance your filtration processes? Contact us today to
+            discuss your specific requirements and discover how our solutions
+            can optimize your operations.
           </motion.p>
 
           <motion.div
@@ -72,9 +81,9 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <ContactDialog>
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary-light text-primary-foreground px-8 py-3 text-sm font-medium tracking-wide"
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary-light text-primary-foreground px-8 py-3 text-sm font-medium tracking-wide hover:bg-black hover:text-white"
               >
                 CONTACT US
               </Button>

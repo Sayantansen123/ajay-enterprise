@@ -28,7 +28,10 @@ import { Loader2 } from "lucide-react";
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().email("Invalid email address").max(255),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -53,7 +56,7 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    
+
     try {
       // Replace these with your EmailJS credentials
       const serviceId = "YOUR_SERVICE_ID";
@@ -92,9 +95,7 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle className="text-2xl">Get in Touch</DialogTitle>
@@ -103,7 +104,10 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 mt-4"
+          >
             <FormField
               control={form.control}
               name="name"
@@ -124,7 +128,11 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="your.email@example.com" type="email" {...field} />
+                    <Input
+                      placeholder="your.email@example.com"
+                      type="email"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -137,7 +145,7 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Textarea 
+                    <Textarea
                       placeholder="Tell us about your filtration needs..."
                       className="min-h-[120px]"
                       {...field}
@@ -147,12 +155,14 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
                 </FormItem>
               )}
             />
-            <Button 
-              type="submit" 
-              className="w-full"
+            <Button
+              type="submit"
+              className="w-full hover:bg-black hover:text-white"
               disabled={isSubmitting}
             >
-              {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {isSubmitting && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              )}
               Send Message
             </Button>
           </form>
